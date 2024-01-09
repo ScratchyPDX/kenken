@@ -1,23 +1,11 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Open Sans", Helvetica, sans-serif;
+}
+
 body {
   background-color: white;
-}
-
-select {
-  font-size: 1.5em;
-}
-
-sup {
-  font-size: 1.5em;
-}
-
-td {
-  background-color: white;
-  height: 90px;
-  width: 90px;
-}
-
-#td {
-  border: 3px solid green;
 }
 
 .borderBottom {
@@ -34,4 +22,46 @@ td {
 
 .borderTop {
  border-top: "11px solid lightgreen";
+}
+
+div {
+  /* margin-right: auto;  */
+  /* margin-left: auto; */
+  /* text-align: center; */
+  align-items: center;
+}
+
+h1 {
+  text-align: center;
+  color: #ffffff;
+  font-size: 24pt;
+  text-shadow: 0 1px 0 #ccc, 0 2px 0 #c9c9c9, 0 3px 0 #bbb, 0 4px 0 #b9b9b9, 0 5px 0 #aaa, 0 6px 1px rgba(0, 0, 0, 0.1), 0 0 5px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.3), 0 3px 5px rgba(0, 0, 0, 0.2), 0 5px 10px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.2), 0 20px 20px rgba(0, 0, 0, 0.15);
+}
+
+h4 {
+  text-align: center;
+}
+
+select {
+  font-size: 1.5em;
+}
+
+sup {
+  color: red;
+  font-size: 1.5em;
+}
+
+table {
+  border-width: "5px";
+  padding: "5px"
+}
+
+td {
+  background-color: white;
+  height: 90px;
+  width: 90px;
+}
+
+#td {
+  border: 3px solid green;
 }
