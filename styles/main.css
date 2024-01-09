@@ -1,0 +1,37 @@
+body {
+  background-color: white;
+}
+
+select {
+  font-size: 1.5em;
+}
+
+sup {
+  font-size: 1.5em;
+}
+
+td {
+  background-color: white;
+  height: 90px;
+  width: 90px;
+}
+
+#td {
+  border: 3px solid green;
+}
+
+.borderBottom {
+  border-bottom: "11px solid lightgreen";
+}
+
+.borderLeft {
+  border-left: "11px solid lightgreen";
+}
+
+.borderRight {
+  border-right: "11px solid lightgreen";
+}
+
+.borderTop {
+ border-top: "11px solid lightgreen";
+}
