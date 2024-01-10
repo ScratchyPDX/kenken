@@ -47,24 +47,24 @@ function populategroupings() {
     for (var icol = 0; icol < 6; icol++) {
       //alert(gsofar);
       if (irow == 0) {
-        document.getElementById(
-          "td" + eval(irow + 1) + eval(icol + 1)
-        ).style.borderTop = "11px solid lightgreen";
+        document
+          .getElementById("td" + eval(irow + 1) + eval(icol + 1))
+          .classList.add("borderTop");
       }
       if (irow == 5) {
-        document.getElementById(
-          "td" + eval(irow + 1) + eval(icol + 1)
-        ).style.borderBottom = "11px solid lightgreen";
+        document
+          .getElementById("td" + eval(irow + 1) + eval(icol + 1))
+          .classList.add("borderBottom");
       }
       if (icol == 0) {
-        document.getElementById(
-          "td" + eval(irow + 1) + eval(icol + 1)
-        ).style.borderLeft = "11px solid lightgreen";
+        document
+          .getElementById("td" + eval(irow + 1) + eval(icol + 1))
+          .classList.add("borderLeft");
       }
       if (icol == 5) {
-        document.getElementById(
-          "td" + eval(irow + 1) + eval(icol + 1)
-        ).style.borderRight = "11px solid lightgreen";
+        document
+          .getElementById("td" + eval(irow + 1) + eval(icol + 1))
+          .classList.add("borderRight");
       }
       if (gsofar.indexOf("mda[" + irow + "][" + icol + "]") == -1) {
         //alert("td" + irow + icol);
@@ -91,18 +91,18 @@ function populategroupings() {
             gonesofar += "mda[" + irow + "][" + icol + "];";
             gsofar += "mda[" + irow + "][" + icol + "];";
             groupings[eval(gslen - 1)] = mda[irow][icol];
-            document.getElementById(
-              "td" + eval(irow + 1) + eval(icol + 1)
-            ).style.borderTop = "11px solid lightgreen";
-            document.getElementById(
-              "td" + eval(irow + 1) + eval(icol + 1)
-            ).style.borderBottom = "11px solid lightgreen";
-            document.getElementById(
-              "td" + eval(irow + 1) + eval(icol + 1)
-            ).style.borderLeft = "11px solid lightgreen";
-            document.getElementById(
-              "td" + eval(irow + 1) + eval(icol + 1)
-            ).style.borderRight = "11px solid lightgreen";
+            document
+              .getElementById("td" + eval(irow + 1) + eval(icol + 1))
+              .classList.add("borderTop");
+            document
+              .getElementById("td" + eval(irow + 1) + eval(icol + 1))
+              .classList.add("borderBottom");
+            document
+              .getElementById("td" + eval(irow + 1) + eval(icol + 1))
+              .classList.add("borderLeft");
+            document
+              .getElementById("td" + eval(irow + 1) + eval(icol + 1))
+              .classList.add("borderRight");
 
             if (numones >= 4) {
               offset++;
@@ -121,30 +121,30 @@ function populategroupings() {
             if (icol == 5) {
               upacross = 1;
             } else if (irow < 5) {
-              document.getElementById(
-                "td" + eval(irow + 1) + eval(icol + 1)
-              ).style.borderLeft = "11px solid lightgreen";
-              document.getElementById(
-                "td" + eval(irow + 1) + eval(icol + 2)
-              ).style.borderRight = "11px solid lightgreen";
-              document.getElementById(
-                "td" + eval(irow + 1) + eval(icol + 1)
-              ).style.borderTop = "11px solid lightgreen";
-              document.getElementById(
-                "td" + eval(irow + 1) + eval(icol + 2)
-              ).style.borderTop = "11px solid lightgreen";
-              document.getElementById(
-                "td" + eval(irow + 1) + eval(icol + 1)
-              ).style.borderBottom = "11px solid lightgreen";
-              document.getElementById(
-                "td" + eval(irow + 2) + eval(icol + 2)
-              ).style.borderBottom = "11px solid lightgreen";
-              document.getElementById(
-                "td" + eval(irow + 2) + eval(icol + 2)
-              ).style.borderLeft = "11px solid lightgreen";
-              document.getElementById(
-                "td" + eval(irow + 2) + eval(icol + 2)
-              ).style.borderRight = "11px solid lightgreen";
+              document
+                .getElementById("td" + eval(irow + 1) + eval(icol + 1))
+                .classList.add("borderLeft");
+              document
+                .getElementById("td" + eval(irow + 1) + eval(icol + 2))
+                .classList.add("borderRight");
+              document
+                .getElementById("td" + eval(irow + 1) + eval(icol + 1))
+                .classList.add("borderTop");
+              document
+                .getElementById("td" + eval(irow + 1) + eval(icol + 2))
+                .classList.add("borderTop");
+              document
+                .getElementById("td" + eval(irow + 1) + eval(icol + 1))
+                .classList.add("borderBottom");
+              document
+                .getElementById("td" + eval(irow + 2) + eval(icol + 2))
+                .classList.add("borderBottom");
+              document
+                .getElementById("td" + eval(irow + 2) + eval(icol + 2))
+                .classList.add("borderLeft");
+              document
+                .getElementById("td" + eval(irow + 2) + eval(icol + 2))
+                .classList.add("borderRight");
               gsofar +=
                 "mda[" +
                 irow +
@@ -176,32 +176,32 @@ function populategroupings() {
             if (irow == 5) {
               upacross = 0;
             } else if (icol < 5) {
-              document.getElementById(
-                "td" + eval(irow + 1) + eval(icol + 1)
-              ).style.borderLeft = "11px solid lightgreen";
-              document.getElementById(
-                "td" + eval(irow + 1) + eval(icol + 1)
-              ).style.borderTop = "11px solid lightgreen";
-              document.getElementById(
-                "td" + eval(irow + 1) + eval(icol + 1)
-              ).style.borderRight = "11px solid lightgreen";
+              document
+                .getElementById("td" + eval(irow + 1) + eval(icol + 1))
+                .classList.add("borderLeft");
+              document
+                .getElementById("td" + eval(irow + 1) + eval(icol + 1))
+                .classList.add("borderTop");
+              document
+                .getElementById("td" + eval(irow + 1) + eval(icol + 1))
+                .classList.add("borderRight");
 
-              document.getElementById(
-                "td" + eval(irow + 2) + eval(icol + 1)
-              ).style.borderLeft = "11px solid lightgreen";
-              document.getElementById(
-                "td" + eval(irow + 2) + eval(icol + 1)
-              ).style.borderBottom = "11px solid lightgreen";
+              document
+                .getElementById("td" + eval(irow + 2) + eval(icol + 1))
+                .classList.add("borderLeft");
+              document
+                .getElementById("td" + eval(irow + 2) + eval(icol + 1))
+                .classList.add("borderBottom");
 
-              document.getElementById(
-                "td" + eval(irow + 2) + eval(icol + 2)
-              ).style.borderBottom = "11px solid lightgreen";
-              document.getElementById(
-                "td" + eval(irow + 2) + eval(icol + 2)
-              ).style.borderRight = "11px solid lightgreen";
-              document.getElementById(
-                "td" + eval(irow + 2) + eval(icol + 2)
-              ).style.borderTop = "11px solid lightgreen";
+              document
+                .getElementById("td" + eval(irow + 2) + eval(icol + 2))
+                .classList.add("borderBottom");
+              document
+                .getElementById("td" + eval(irow + 2) + eval(icol + 2))
+                .classList.add("borderRight");
+              document
+                .getElementById("td" + eval(irow + 2) + eval(icol + 2))
+                .classList.add("borderTop");
 
               gsofar +=
                 "mda[" +
@@ -231,30 +231,30 @@ function populategroupings() {
             }
           }
           if (upacross == 0 && numsquares == 3) {
-            document.getElementById(
-              "td" + eval(irow + 1) + eval(icol + 1)
-            ).style.borderLeft = "11px solid lightgreen";
-            document.getElementById(
-              "td" + eval(irow + 1) + eval(icol + 2)
-            ).style.borderRight = "11px solid lightgreen";
-            document.getElementById(
-              "td" + eval(irow + 1) + eval(icol + 1)
-            ).style.borderTop = "11px solid lightgreen";
-            document.getElementById(
-              "td" + eval(irow + 1) + eval(icol + 2)
-            ).style.borderTop = "11px solid lightgreen";
-            document.getElementById(
-              "td" + eval(irow + 1) + eval(icol + 1)
-            ).style.borderBottom = "11px solid lightgreen";
-            document.getElementById(
-              "td" + eval(irow + 2) + eval(icol + 2)
-            ).style.borderBottom = "11px solid lightgreen";
-            document.getElementById(
-              "td" + eval(irow + 2) + eval(icol + 2)
-            ).style.borderLeft = "11px solid lightgreen";
-            document.getElementById(
-              "td" + eval(irow + 2) + eval(icol + 2)
-            ).style.borderRight = "11px solid lightgreen";
+            document
+              .getElementById("td" + eval(irow + 1) + eval(icol + 1))
+              .classList.add("borderLeft");
+            document
+              .getElementById("td" + eval(irow + 1) + eval(icol + 2))
+              .classList.add("borderRight");
+            document
+              .getElementById("td" + eval(irow + 1) + eval(icol + 1))
+              .classList.add("borderTop");
+            document
+              .getElementById("td" + eval(irow + 1) + eval(icol + 2))
+              .classList.add("borderTop");
+            document
+              .getElementById("td" + eval(irow + 1) + eval(icol + 1))
+              .classList.add("borderBottom");
+            document
+              .getElementById("td" + eval(irow + 2) + eval(icol + 2))
+              .classList.add("borderBottom");
+            document
+              .getElementById("td" + eval(irow + 2) + eval(icol + 2))
+              .classList.add("borderLeft");
+            document
+              .getElementById("td" + eval(irow + 2) + eval(icol + 2))
+              .classList.add("borderRight");
             gsofar +=
               "mda[" +
               irow +
@@ -291,24 +291,24 @@ function populategroupings() {
               //numsquares = 1;
               upacross = 1;
             } else {
-              document.getElementById(
-                "td" + eval(irow + 1) + eval(icol + 1)
-              ).style.borderLeft = "11px solid lightgreen";
-              document.getElementById(
-                "td" + eval(irow + 1) + eval(icol + 2)
-              ).style.borderRight = "11px solid lightgreen";
-              document.getElementById(
-                "td" + eval(irow + 1) + eval(icol + 1)
-              ).style.borderTop = "11px solid lightgreen";
-              document.getElementById(
-                "td" + eval(irow + 1) + eval(icol + 2)
-              ).style.borderTop = "11px solid lightgreen";
-              document.getElementById(
-                "td" + eval(irow + 1) + eval(icol + 1)
-              ).style.borderBottom = "11px solid lightgreen";
-              document.getElementById(
-                "td" + eval(irow + 1) + eval(icol + 2)
-              ).style.borderBottom = "11px solid lightgreen";
+              document
+                .getElementById("td" + eval(irow + 1) + eval(icol + 1))
+                .classList.add("borderLeft");
+              document
+                .getElementById("td" + eval(irow + 1) + eval(icol + 2))
+                .classList.add("borderRight");
+              document
+                .getElementById("td" + eval(irow + 1) + eval(icol + 1))
+                .classList.add("borderTop");
+              document
+                .getElementById("td" + eval(irow + 1) + eval(icol + 2))
+                .classList.add("borderTop");
+              document
+                .getElementById("td" + eval(irow + 1) + eval(icol + 1))
+                .classList.add("borderBottom");
+              document
+                .getElementById("td" + eval(irow + 1) + eval(icol + 2))
+                .classList.add("borderBottom");
               if (
                 eval(mda[irow][icol]) < eval(mda[irow][eval(icol + 1)]) &&
                 eval((Math.floor(Math.random() * 80) + 0) % 2) == 0
@@ -385,22 +385,22 @@ function populategroupings() {
             } else {
               document.getElementById(
                 "td" + eval(irow + 1) + eval(icol + 1)
-              ).style.borderLeft = "11px solid lightgreen";
+              ).classList.add("borderLeft");
               document.getElementById(
                 "td" + eval(irow + 2) + eval(icol + 1)
-              ).style.borderLeft = "11px solid lightgreen";
+              ).classList.add("borderLeft");
               document.getElementById(
                 "td" + eval(irow + 1) + eval(icol + 1)
-              ).style.borderRight = "11px solid lightgreen";
+              ).classList.add("borderRight");
               document.getElementById(
                 "td" + eval(irow + 2) + eval(icol + 1)
-              ).style.borderRight = "11px solid lightgreen";
+              ).classList.add("borderRight");
               document.getElementById(
                 "td" + eval(irow + 1) + eval(icol + 1)
-              ).style.borderTop = "11px solid lightgreen";
+              ).classList.add("borderTop");
               document.getElementById(
                 "td" + eval(irow + 2) + eval(icol + 1)
-              ).style.borderBottom = "11px solid lightgreen";
+              ).classList.add("borderBottom");
               if (
                 eval(mda[irow][icol]) < eval(mda[eval(irow + 1)][icol]) &&
                 eval((Math.floor(Math.random() * 80) + 0) % 2) == 0
@@ -476,22 +476,22 @@ function populategroupings() {
             } else {
               document.getElementById(
                 "td" + eval(irow + 1) + eval(icol + 1)
-              ).style.borderLeft = "11px solid lightgreen";
+              ).classList.add("borderLeft");
               document.getElementById(
                 "td" + eval(irow + 1) + eval(icol + 2)
-              ).style.borderRight = "11px solid lightgreen";
+              ).classList.add("borderRight");
               document.getElementById(
                 "td" + eval(irow + 1) + eval(icol + 1)
-              ).style.borderTop = "11px solid lightgreen";
+              ).classList.add("borderTop");
               document.getElementById(
                 "td" + eval(irow + 1) + eval(icol + 2)
-              ).style.borderTop = "11px solid lightgreen";
+              ).classList.add("borderTop");
               document.getElementById(
                 "td" + eval(irow + 1) + eval(icol + 1)
-              ).style.borderBottom = "11px solid lightgreen";
+              ).classList.add("borderBottom");
               document.getElementById(
                 "td" + eval(irow + 1) + eval(icol + 2)
-              ).style.borderBottom = "11px solid lightgreen";
+              ).classList.add("borderBottom");
               if (
                 eval(mda[irow][icol]) < eval(mda[irow][eval(icol + 1)]) &&
                 eval((Math.floor(Math.random() * 80) + 0) % 2) == 0
@@ -563,16 +563,16 @@ function populategroupings() {
             groupings[eval(gslen - 1)] = mda[irow][icol];
             document.getElementById(
               "td" + eval(irow + 1) + eval(icol + 1)
-            ).style.borderTop = "11px solid lightgreen";
+            ).classList.add("borderTop");
             document.getElementById(
               "td" + eval(irow + 1) + eval(icol + 1)
-            ).style.borderBottom = "11px solid lightgreen";
+            ).classList.add("borderBottom");
             document.getElementById(
               "td" + eval(irow + 1) + eval(icol + 1)
-            ).style.borderLeft = "11px solid lightgreen";
+            ).classList.add("borderLeft");
             document.getElementById(
               "td" + eval(irow + 1) + eval(icol + 1)
-            ).style.borderRight = "11px solid lightgreen";
+            ).classList.add("borderRight");
           }
         }
         plussup = (

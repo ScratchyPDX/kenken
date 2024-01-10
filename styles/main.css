@@ -9,19 +9,19 @@ body {
 }
 
 .borderBottom {
-  border-bottom: "11px solid lightgreen";
+  border-bottom: 4px solid grey;
 }
 
 .borderLeft {
-  border-left: "11px solid lightgreen";
+  border-left: 4px solid grey;
 }
 
 .borderRight {
-  border-right: "11px solid lightgreen";
+  border-right: 4px solid grey;
 }
 
 .borderTop {
- border-top: "11px solid lightgreen";
+ border-top: 4px solid grey;
 }
 
 div {
