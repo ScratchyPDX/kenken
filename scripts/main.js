@@ -1,601 +1,586 @@
-var gsofar = ";";
-var prerework = "";
-var score = 0;
-var goes = 0;
-var okcnt = 0;
-var nth = "";
-var ok = false;
-var divcontent = "";
-var mda = [
-  [0, 0],
-  [0, 0],
-  [0, 0],
-  [0, 0],
-  [0, 0],
-  [0, 0],
-  [0, 0],
-  [0, 0],
-  [0, 0],
-  [0, 0],
-  [0, 0],
-  [0, 0],
-  [0, 0],
-  [0, 0],
-  [0, 0],
-  [0, 0],
-  [0, 0],
-  [0, 0],
+let g_SoFar = ";";
+let preRework = "";
+let score = 0;
+let goes = 0;
+let okCount = 0;
+let nth = "";
+let ok = false;
+let divContent = "";
+let divArray = [
+  [0, 0],[0, 0],[0, 0],[0, 0],[0, 0],[0, 0],
+  [0, 0],[0, 0],[0, 0],[0, 0],[0, 0],[0, 0],
+  [0, 0],[0, 0],[0, 0],[0, 0],[0, 0],[0, 0],
 ];
-var groupings = new Array("");
+let groupings = new Array("");
 
-function populategroupings() {
-  var gonesofar = ";",
-    csign = "+",
-    plussup = "";
-  var numsquares = 0,
-    upacross = 0,
-    timesplus = 0;
-  var numones = 0,
-    numthrees = 0,
-    lowerval = 1,
-    offset = 0;
-  var gslen = groupings.length;
-  gsofar = ";" + groupings[0] + ";";
-  if (gslen == 1) groupings[0] = "";
-  //alert(99);
-  for (var irow = 0; irow < 6; irow++) {
-    for (var icol = 0; icol < 6; icol++) {
-      //alert(gsofar);
-      if (irow == 0) {
+function populateGroupings() {
+  let goneSoFar = ";";
+  let calcSign;
+  let plusSup = "";
+  let upAcross = 0;
+  let numOnes = 0;
+  let numThrees = 0;
+  let lowerValue = 1;
+  let offset = 0;
+  let groupingsLength = groupings.length;
+
+  g_SoFar = `;${groupings[0]};`;
+  if (groupingsLength == 1) {
+    groupings[0] = "";
+  }
+
+  for (let row = 0; row < 6; row++) {
+    for (let column = 0; column < 6; column++) {
+      if (row == 0) {
         document
-          .getElementById("td" + eval(irow + 1) + eval(icol + 1))
+          .getElementById("td" + eval(row + 1) + eval(column + 1))
           .classList.add("borderTop");
       }
-      if (irow == 5) {
+      if (row == 5) {
         document
-          .getElementById("td" + eval(irow + 1) + eval(icol + 1))
+          .getElementById("td" + eval(row + 1) + eval(column + 1))
           .classList.add("borderBottom");
       }
-      if (icol == 0) {
+      if (column == 0) {
         document
-          .getElementById("td" + eval(irow + 1) + eval(icol + 1))
+          .getElementById("td" + eval(row + 1) + eval(column + 1))
           .classList.add("borderLeft");
       }
-      if (icol == 5) {
+      if (column == 5) {
         document
-          .getElementById("td" + eval(irow + 1) + eval(icol + 1))
+          .getElementById("td" + eval(row + 1) + eval(column + 1))
           .classList.add("borderRight");
       }
-      if (gsofar.indexOf("mda[" + irow + "][" + icol + "]") == -1) {
-        //alert("td" + irow + icol);
-        if (gslen == 1) {
+      if (g_SoFar.indexOf("mda[" + row + "][" + column + "]") == -1) {
+        if (groupingsLength == 1) {
           groupings[0] = "";
         } else {
           groupings.push("");
         }
-        gslen = groupings.length;
-        upacross = Math.floor(Math.random() * 1) + 0;
-        numsquares =
-          Math.floor(Math.random() * eval(4 - lowerval - offset)) + lowerval;
-        if (numsquares == 3) {
-          numthrees++;
-          if (numthrees >= 2) offset++;
-        } else if (numsquares == 1) {
+        groupingsLength = groupings.length;
+        upAcross = Math.floor(Math.random() * 1) + 0;
+        let numOfSquares =
+          Math.floor(Math.random() * eval(4 - lowerValue - offset)) +
+          lowerValue;
+        if (numOfSquares == 3) {
+          numThrees++;
+          if (numThrees >= 2) offset++;
+        } else if (numOfSquares == 1) {
           if (
-            gonesofar.indexOf(";mda[" + irow + "]") != -1 ||
-            gonesofar.indexOf("][" + icol + "]") != -1
+            goneSoFar.indexOf(";mda[" + row + "]") != -1 ||
+            goneSoFar.indexOf("][" + column + "]") != -1
           ) {
-            numsquares++;
+            numOfSquares++;
           } else {
-            numones++;
-            gonesofar += "mda[" + irow + "][" + icol + "];";
-            gsofar += "mda[" + irow + "][" + icol + "];";
-            groupings[eval(gslen - 1)] = mda[irow][icol];
+            numOnes++;
+            goneSoFar += "mda[" + row + "][" + column + "];";
+            g_SoFar += "mda[" + row + "][" + column + "];";
+            groupings[eval(groupingsLength - 1)] = divArray[row][column];
             document
-              .getElementById("td" + eval(irow + 1) + eval(icol + 1))
+              .getElementById("td" + eval(row + 1) + eval(column + 1))
               .classList.add("borderTop");
             document
-              .getElementById("td" + eval(irow + 1) + eval(icol + 1))
+              .getElementById("td" + eval(row + 1) + eval(column + 1))
               .classList.add("borderBottom");
             document
-              .getElementById("td" + eval(irow + 1) + eval(icol + 1))
+              .getElementById("td" + eval(row + 1) + eval(column + 1))
               .classList.add("borderLeft");
             document
-              .getElementById("td" + eval(irow + 1) + eval(icol + 1))
+              .getElementById("td" + eval(row + 1) + eval(column + 1))
               .classList.add("borderRight");
 
-            if (numones >= 4) {
+            if (numOnes >= 4) {
               offset++;
-              lowerval = 1;
+              lowerValue = 1;
             }
           }
         }
 
-        if (numsquares == 3) {
+        if (numOfSquares == 3) {
           if (eval((Math.floor(Math.random() * 80) + 0) % 2) == 0) {
-            csign = "+";
+            calcSign = "+";
           } else {
-            csign = "*";
+            calcSign = "*";
           }
-          if (upacross == 0) {
-            if (icol == 5) {
-              upacross = 1;
-            } else if (irow < 5) {
+          if (upAcross == 0) {
+            if (column == 5) {
+              upAcross = 1;
+            } else if (row < 5) {
               document
-                .getElementById("td" + eval(irow + 1) + eval(icol + 1))
+                .getElementById("td" + eval(row + 1) + eval(column + 1))
                 .classList.add("borderLeft");
               document
-                .getElementById("td" + eval(irow + 1) + eval(icol + 2))
+                .getElementById("td" + eval(row + 1) + eval(column + 2))
                 .classList.add("borderRight");
               document
-                .getElementById("td" + eval(irow + 1) + eval(icol + 1))
+                .getElementById("td" + eval(row + 1) + eval(column + 1))
                 .classList.add("borderTop");
               document
-                .getElementById("td" + eval(irow + 1) + eval(icol + 2))
+                .getElementById("td" + eval(row + 1) + eval(column + 2))
                 .classList.add("borderTop");
               document
-                .getElementById("td" + eval(irow + 1) + eval(icol + 1))
+                .getElementById("td" + eval(row + 1) + eval(column + 1))
                 .classList.add("borderBottom");
               document
-                .getElementById("td" + eval(irow + 2) + eval(icol + 2))
+                .getElementById("td" + eval(row + 2) + eval(column + 2))
                 .classList.add("borderBottom");
               document
-                .getElementById("td" + eval(irow + 2) + eval(icol + 2))
+                .getElementById("td" + eval(row + 2) + eval(column + 2))
                 .classList.add("borderLeft");
               document
-                .getElementById("td" + eval(irow + 2) + eval(icol + 2))
+                .getElementById("td" + eval(row + 2) + eval(column + 2))
                 .classList.add("borderRight");
-              gsofar +=
+              g_SoFar +=
                 "mda[" +
-                irow +
+                row +
                 "][" +
-                icol +
+                column +
                 "]" +
-                csign +
+                calcSign +
                 "mda[" +
-                irow +
+                row +
                 "][" +
-                eval(icol + 1) +
+                eval(column + 1) +
                 "]" +
-                csign;
-              gsofar += "mda[" + eval(irow + 1) + "][" + eval(icol + 1) + "];";
-              groupings[eval(gslen - 1)] =
+                calcSign;
+              g_SoFar += "mda[" + eval(row + 1) + "][" + eval(column + 1) + "];";
+              groupings[eval(groupingsLength - 1)] =
                 eval(
-                  mda[irow][icol] +
-                    csign +
-                    mda[irow][eval(icol + 1)] +
-                    csign +
-                    mda[eval(irow + 1)][eval(icol + 1)]
-                ) + csign;
-              upacross = -1;
+                  divArray[row][column] +
+                    calcSign +
+                    divArray[row][eval(column + 1)] +
+                    calcSign +
+                    divArray[eval(row + 1)][eval(column + 1)]
+                ) + calcSign;
+              upAcross = -1;
             } else {
-              numsquares = 2;
+              numOfSquares = 2;
             }
           }
-          if (upacross == 1 && numsquares == 3) {
-            if (irow == 5) {
-              upacross = 0;
-            } else if (icol < 5) {
+          if (upAcross == 1 && numOfSquares == 3) {
+            if (row == 5) {
+              upAcross = 0;
+            } else if (column < 5) {
               document
-                .getElementById("td" + eval(irow + 1) + eval(icol + 1))
+                .getElementById("td" + eval(row + 1) + eval(column + 1))
                 .classList.add("borderLeft");
               document
-                .getElementById("td" + eval(irow + 1) + eval(icol + 1))
+                .getElementById("td" + eval(row + 1) + eval(column + 1))
                 .classList.add("borderTop");
               document
-                .getElementById("td" + eval(irow + 1) + eval(icol + 1))
+                .getElementById("td" + eval(row + 1) + eval(column + 1))
                 .classList.add("borderRight");
 
               document
-                .getElementById("td" + eval(irow + 2) + eval(icol + 1))
+                .getElementById("td" + eval(row + 2) + eval(column + 1))
                 .classList.add("borderLeft");
               document
-                .getElementById("td" + eval(irow + 2) + eval(icol + 1))
+                .getElementById("td" + eval(row + 2) + eval(column + 1))
                 .classList.add("borderBottom");
 
               document
-                .getElementById("td" + eval(irow + 2) + eval(icol + 2))
+                .getElementById("td" + eval(row + 2) + eval(column + 2))
                 .classList.add("borderBottom");
               document
-                .getElementById("td" + eval(irow + 2) + eval(icol + 2))
+                .getElementById("td" + eval(row + 2) + eval(column + 2))
                 .classList.add("borderRight");
               document
-                .getElementById("td" + eval(irow + 2) + eval(icol + 2))
+                .getElementById("td" + eval(row + 2) + eval(column + 2))
                 .classList.add("borderTop");
 
-              gsofar +=
+              g_SoFar +=
                 "mda[" +
-                irow +
+                row +
                 "][" +
-                icol +
+                column +
                 "]" +
-                csign +
+                calcSign +
                 "mda[" +
-                eval(irow + 1) +
+                eval(row + 1) +
                 "][" +
-                icol +
+                column +
                 "]" +
-                csign;
-              gsofar += "mda[" + eval(irow + 1) + "][" + eval(icol + 1) + "];";
-              groupings[eval(gslen - 1)] =
+                calcSign;
+              g_SoFar += "mda[" + eval(row + 1) + "][" + eval(column + 1) + "];";
+              groupings[eval(groupingsLength - 1)] =
                 eval(
-                  mda[irow][icol] +
-                    csign +
-                    mda[eval(irow + 1)][icol] +
-                    csign +
-                    mda[eval(irow + 1)][eval(icol + 1)]
-                ) + csign;
-              upacross = -1;
+                  divArray[row][column] +
+                    calcSign +
+                    divArray[eval(row + 1)][column] +
+                    calcSign +
+                    divArray[eval(row + 1)][eval(column + 1)]
+                ) + calcSign;
+              upAcross = -1;
             } else {
-              numsquares = 2;
+              numOfSquares = 2;
             }
           }
-          if (upacross == 0 && numsquares == 3) {
+          if (upAcross == 0 && numOfSquares == 3) {
             document
-              .getElementById("td" + eval(irow + 1) + eval(icol + 1))
+              .getElementById("td" + eval(row + 1) + eval(column + 1))
               .classList.add("borderLeft");
             document
-              .getElementById("td" + eval(irow + 1) + eval(icol + 2))
+              .getElementById("td" + eval(row + 1) + eval(column + 2))
               .classList.add("borderRight");
             document
-              .getElementById("td" + eval(irow + 1) + eval(icol + 1))
+              .getElementById("td" + eval(row + 1) + eval(column + 1))
               .classList.add("borderTop");
             document
-              .getElementById("td" + eval(irow + 1) + eval(icol + 2))
+              .getElementById("td" + eval(row + 1) + eval(column + 2))
               .classList.add("borderTop");
             document
-              .getElementById("td" + eval(irow + 1) + eval(icol + 1))
+              .getElementById("td" + eval(row + 1) + eval(column + 1))
               .classList.add("borderBottom");
             document
-              .getElementById("td" + eval(irow + 2) + eval(icol + 2))
+              .getElementById("td" + eval(row + 2) + eval(column + 2))
               .classList.add("borderBottom");
             document
-              .getElementById("td" + eval(irow + 2) + eval(icol + 2))
+              .getElementById("td" + eval(row + 2) + eval(column + 2))
               .classList.add("borderLeft");
             document
-              .getElementById("td" + eval(irow + 2) + eval(icol + 2))
+              .getElementById("td" + eval(row + 2) + eval(column + 2))
               .classList.add("borderRight");
-            gsofar +=
+            g_SoFar +=
               "mda[" +
-              irow +
+              row +
               "][" +
-              icol +
+              column +
               "]" +
-              csign +
+              calcSign +
               "mda[" +
-              irow +
+              row +
               "][" +
-              eval(icol + 1) +
+              eval(column + 1) +
               "]" +
-              csign;
-            gsofar += "mda[" + eval(irow + 1) + "][" + eval(icol + 1) + "];";
-            groupings[eval(gslen - 1)] =
+              calcSign;
+            g_SoFar += "mda[" + eval(row + 1) + "][" + eval(column + 1) + "];";
+            groupings[eval(groupingsLength - 1)] =
               eval(
-                mda[irow][icol] +
-                  csign +
-                  mda[irow][eval(icol + 1)] +
-                  csign +
-                  mda[eval(irow + 1)][eval(icol + 1)]
-              ) + csign;
-            upacross = -1;
+                divArray[row][column] +
+                  calcSign +
+                  divArray[row][eval(column + 1)] +
+                  calcSign +
+                  divArray[eval(row + 1)][eval(column + 1)]
+              ) + calcSign;
+            upAcross = -1;
           }
         }
 
-        if (numsquares == 2) {
-          if (upacross == 0) {
-            if (icol == 5) {
-              upacross = 1;
+        if (numOfSquares == 2) {
+          if (upAcross == 0) {
+            if (column == 5) {
+              upAcross = 1;
             } else if (
-              gsofar.indexOf("mda[" + irow + "][" + eval(icol + 1) + "]") != -1
+              g_SoFar.indexOf("mda[" + row + "][" + eval(column + 1) + "]") != -1
             ) {
               //numsquares = 1;
-              upacross = 1;
+              upAcross = 1;
             } else {
               document
-                .getElementById("td" + eval(irow + 1) + eval(icol + 1))
+                .getElementById("td" + eval(row + 1) + eval(column + 1))
                 .classList.add("borderLeft");
               document
-                .getElementById("td" + eval(irow + 1) + eval(icol + 2))
+                .getElementById("td" + eval(row + 1) + eval(column + 2))
                 .classList.add("borderRight");
               document
-                .getElementById("td" + eval(irow + 1) + eval(icol + 1))
+                .getElementById("td" + eval(row + 1) + eval(column + 1))
                 .classList.add("borderTop");
               document
-                .getElementById("td" + eval(irow + 1) + eval(icol + 2))
+                .getElementById("td" + eval(row + 1) + eval(column + 2))
                 .classList.add("borderTop");
               document
-                .getElementById("td" + eval(irow + 1) + eval(icol + 1))
+                .getElementById("td" + eval(row + 1) + eval(column + 1))
                 .classList.add("borderBottom");
               document
-                .getElementById("td" + eval(irow + 1) + eval(icol + 2))
+                .getElementById("td" + eval(row + 1) + eval(column + 2))
                 .classList.add("borderBottom");
               if (
-                eval(mda[irow][icol]) < eval(mda[irow][eval(icol + 1)]) &&
+                eval(divArray[row][column]) < eval(divArray[row][eval(column + 1)]) &&
                 eval((Math.floor(Math.random() * 80) + 0) % 2) == 0
               ) {
-                gsofar +=
+                g_SoFar +=
                   "mda[" +
-                  irow +
+                  row +
                   "][" +
-                  icol +
+                  column +
                   "]+mda[" +
-                  irow +
+                  row +
                   "][" +
-                  eval(icol + 1) +
+                  eval(column + 1) +
                   "];";
-                groupings[eval(gslen - 1)] =
-                  eval(mda[irow][icol] + mda[irow][eval(icol + 1)]) + "+";
+                groupings[eval(groupingsLength - 1)] =
+                  eval(divArray[row][column] + divArray[row][eval(column + 1)]) + "+";
               } else if (
-                eval(mda[irow][icol]) < eval(mda[irow][eval(icol + 1)])
+                eval(divArray[row][column]) < eval(divArray[row][eval(column + 1)])
               ) {
-                gsofar +=
+                g_SoFar +=
                   "mda[" +
-                  irow +
+                  row +
                   "][" +
-                  icol +
+                  column +
                   "]*mda[" +
-                  irow +
+                  row +
                   "][" +
-                  eval(icol + 1) +
+                  eval(column + 1) +
                   "];";
-                groupings[eval(gslen - 1)] =
-                  eval(mda[irow][icol] * mda[irow][eval(icol + 1)]) + "*";
+                groupings[eval(groupingsLength - 1)] =
+                  eval(divArray[row][column] * divArray[row][eval(column + 1)]) + "*";
               } else if (
-                eval(mda[irow][icol] % mda[irow][eval(icol + 1)]) == 0 &&
-                eval(mda[irow][icol] / mda[irow][eval(icol + 1)]) <= 3
+                eval(divArray[row][column] % divArray[row][eval(column + 1)]) == 0 &&
+                eval(divArray[row][column] / divArray[row][eval(column + 1)]) <= 3
               ) {
-                gsofar +=
+                g_SoFar +=
                   "mda[" +
-                  irow +
+                  row +
                   "][" +
-                  icol +
+                  column +
                   "]/mda[" +
-                  irow +
+                  row +
                   "][" +
-                  eval(icol + 1) +
+                  eval(column + 1) +
                   "];";
-                groupings[eval(gslen - 1)] =
-                  eval(mda[irow][icol] / mda[irow][eval(icol + 1)]) + "/";
+                groupings[eval(groupingsLength - 1)] =
+                  eval(divArray[row][column] / divArray[row][eval(column + 1)]) + "/";
               } else {
-                gsofar +=
+                g_SoFar +=
                   "mda[" +
-                  irow +
+                  row +
                   "][" +
-                  icol +
+                  column +
                   "]-mda[" +
-                  irow +
+                  row +
                   "][" +
-                  eval(icol + 1) +
+                  eval(column + 1) +
                   "];";
-                groupings[eval(gslen - 1)] =
-                  eval(mda[irow][icol] - mda[irow][eval(icol + 1)]) + "-";
+                groupings[eval(groupingsLength - 1)] =
+                  eval(divArray[row][column] - divArray[row][eval(column + 1)]) + "-";
               }
               //gsofar+="mda[" + irow + "][" + icol + "],mda[" + irow + "][" + eval(icol + 1) + "];";
-              upacross = -1;
+              upAcross = -1;
             }
           }
-          if (upacross == 1) {
-            if (irow == 5) {
-              upacross = 0;
+          if (upAcross == 1) {
+            if (row == 5) {
+              upAcross = 0;
             } else if (
-              gsofar.indexOf("mda[" + eval(irow + 1) + "][" + icol + "]") != -1
+              g_SoFar.indexOf("mda[" + eval(row + 1) + "][" + column + "]") != -1
             ) {
-              numsquares = 1;
-              upacross = -1;
+              numOfSquares = 1;
+              upAcross = -1;
             } else {
-              document.getElementById(
-                "td" + eval(irow + 1) + eval(icol + 1)
-              ).classList.add("borderLeft");
-              document.getElementById(
-                "td" + eval(irow + 2) + eval(icol + 1)
-              ).classList.add("borderLeft");
-              document.getElementById(
-                "td" + eval(irow + 1) + eval(icol + 1)
-              ).classList.add("borderRight");
-              document.getElementById(
-                "td" + eval(irow + 2) + eval(icol + 1)
-              ).classList.add("borderRight");
-              document.getElementById(
-                "td" + eval(irow + 1) + eval(icol + 1)
-              ).classList.add("borderTop");
-              document.getElementById(
-                "td" + eval(irow + 2) + eval(icol + 1)
-              ).classList.add("borderBottom");
+              document
+                .getElementById("td" + eval(row + 1) + eval(column + 1))
+                .classList.add("borderLeft");
+              document
+                .getElementById("td" + eval(row + 2) + eval(column + 1))
+                .classList.add("borderLeft");
+              document
+                .getElementById("td" + eval(row + 1) + eval(column + 1))
+                .classList.add("borderRight");
+              document
+                .getElementById("td" + eval(row + 2) + eval(column + 1))
+                .classList.add("borderRight");
+              document
+                .getElementById("td" + eval(row + 1) + eval(column + 1))
+                .classList.add("borderTop");
+              document
+                .getElementById("td" + eval(row + 2) + eval(column + 1))
+                .classList.add("borderBottom");
               if (
-                eval(mda[irow][icol]) < eval(mda[eval(irow + 1)][icol]) &&
+                eval(divArray[row][column]) < eval(divArray[eval(row + 1)][column]) &&
                 eval((Math.floor(Math.random() * 80) + 0) % 2) == 0
               ) {
-                gsofar +=
+                g_SoFar +=
                   "mda[" +
-                  irow +
+                  row +
                   "][" +
-                  icol +
+                  column +
                   "]+mda[" +
-                  eval(irow + 1) +
+                  eval(row + 1) +
                   "][" +
-                  icol +
+                  column +
                   "];";
-                groupings[eval(gslen - 1)] =
-                  eval(mda[irow][icol] + mda[eval(irow + 1)][icol]) + "+";
+                groupings[eval(groupingsLength - 1)] =
+                  eval(divArray[row][column] + divArray[eval(row + 1)][column]) + "+";
               } else if (
-                eval(mda[irow][icol]) < eval(mda[eval(irow + 1)][icol])
+                eval(divArray[row][column]) < eval(divArray[eval(row + 1)][column])
               ) {
-                gsofar +=
+                g_SoFar +=
                   "mda[" +
-                  irow +
+                  row +
                   "][" +
-                  icol +
+                  column +
                   "]*mda[" +
-                  eval(irow + 1) +
+                  eval(row + 1) +
                   "][" +
-                  icol +
+                  column +
                   "];";
-                groupings[eval(gslen - 1)] =
-                  eval(mda[irow][icol] * mda[eval(irow + 1)][icol]) + "*";
+                groupings[eval(groupingsLength - 1)] =
+                  eval(divArray[row][column] * divArray[eval(row + 1)][column]) + "*";
               } else if (
-                eval(mda[irow][icol] % mda[irow][eval(icol + 1)]) == 0 &&
-                eval(mda[irow][icol] / mda[irow][eval(icol + 1)]) <= 3
+                eval(divArray[row][column] % divArray[row][eval(column + 1)]) == 0 &&
+                eval(divArray[row][column] / divArray[row][eval(column + 1)]) <= 3
               ) {
-                gsofar +=
+                g_SoFar +=
                   "mda[" +
-                  irow +
+                  row +
                   "][" +
-                  icol +
+                  column +
                   "]/mda[" +
-                  eval(irow + 1) +
+                  eval(row + 1) +
                   "][" +
-                  icol +
+                  column +
                   "];";
-                groupings[eval(gslen - 1)] =
-                  eval(mda[irow][icol] / mda[eval(irow + 1)][icol]) + "/";
+                groupings[eval(groupingsLength - 1)] =
+                  eval(divArray[row][column] / divArray[eval(row + 1)][column]) + "/";
               } else {
-                gsofar +=
+                g_SoFar +=
                   "mda[" +
-                  irow +
+                  row +
                   "][" +
-                  icol +
+                  column +
                   "]-mda[" +
-                  eval(irow + 1) +
+                  eval(row + 1) +
                   "][" +
-                  icol +
+                  column +
                   "];";
-                groupings[eval(gslen - 1)] =
-                  eval(mda[irow][icol] - mda[eval(irow + 1)][icol]) + "-";
+                groupings[eval(groupingsLength - 1)] =
+                  eval(divArray[row][column] - divArray[eval(row + 1)][column]) + "-";
               }
               //gsofar+="mda[" + irow + "][" + icol + "],mda[" + eval(irow + 1) + "][" + icol + "];";
-              upacross = -1;
+              upAcross = -1;
               //document.getElementById('myh1').innerHTML=gsofar;
             }
           }
-          if (upacross == 0) {
+          if (upAcross == 0) {
             if (
-              gsofar.indexOf("mda[" + irow + "][" + eval(icol + 1) + "]") != -1
+              g_SoFar.indexOf("mda[" + row + "][" + eval(column + 1) + "]") != -1
             ) {
-              numsquares = 1;
-              upacross = -1;
+              numOfSquares = 1;
+              upAcross = -1;
             } else {
-              document.getElementById(
-                "td" + eval(irow + 1) + eval(icol + 1)
-              ).classList.add("borderLeft");
-              document.getElementById(
-                "td" + eval(irow + 1) + eval(icol + 2)
-              ).classList.add("borderRight");
-              document.getElementById(
-                "td" + eval(irow + 1) + eval(icol + 1)
-              ).classList.add("borderTop");
-              document.getElementById(
-                "td" + eval(irow + 1) + eval(icol + 2)
-              ).classList.add("borderTop");
-              document.getElementById(
-                "td" + eval(irow + 1) + eval(icol + 1)
-              ).classList.add("borderBottom");
-              document.getElementById(
-                "td" + eval(irow + 1) + eval(icol + 2)
-              ).classList.add("borderBottom");
+              document
+                .getElementById("td" + eval(row + 1) + eval(column + 1))
+                .classList.add("borderLeft");
+              document
+                .getElementById("td" + eval(row + 1) + eval(column + 2))
+                .classList.add("borderRight");
+              document
+                .getElementById("td" + eval(row + 1) + eval(column + 1))
+                .classList.add("borderTop");
+              document
+                .getElementById("td" + eval(row + 1) + eval(column + 2))
+                .classList.add("borderTop");
+              document
+                .getElementById("td" + eval(row + 1) + eval(column + 1))
+                .classList.add("borderBottom");
+              document
+                .getElementById("td" + eval(row + 1) + eval(column + 2))
+                .classList.add("borderBottom");
               if (
-                eval(mda[irow][icol]) < eval(mda[irow][eval(icol + 1)]) &&
+                eval(divArray[row][column]) < eval(divArray[row][eval(column + 1)]) &&
                 eval((Math.floor(Math.random() * 80) + 0) % 2) == 0
               ) {
-                gsofar +=
+                g_SoFar +=
                   "mda[" +
-                  irow +
+                  row +
                   "][" +
-                  icol +
+                  column +
                   "]+mda[" +
-                  irow +
+                  row +
                   "][" +
-                  eval(icol + 1) +
+                  eval(column + 1) +
                   "];";
-                groupings[eval(gslen - 1)] =
-                  eval(mda[irow][icol] + mda[irow][eval(icol + 1)]) + "+";
+                groupings[eval(groupingsLength - 1)] =
+                  eval(divArray[row][column] + divArray[row][eval(column + 1)]) + "+";
               } else if (
-                eval(mda[irow][icol]) < eval(mda[irow][eval(icol + 1)])
+                eval(divArray[row][column]) < eval(divArray[row][eval(column + 1)])
               ) {
-                gsofar +=
+                g_SoFar +=
                   "mda[" +
-                  irow +
+                  row +
                   "][" +
-                  icol +
+                  column +
                   "]*mda[" +
-                  irow +
+                  row +
                   "][" +
-                  eval(icol + 1) +
+                  eval(column + 1) +
                   "];";
-                groupings[eval(gslen - 1)] =
-                  eval(mda[irow][icol] * mda[irow][eval(icol + 1)]) + "*";
+                groupings[eval(groupingsLength - 1)] =
+                  eval(divArray[row][column] * divArray[row][eval(column + 1)]) + "*";
               } else if (
-                eval(mda[irow][icol] % mda[irow][eval(icol + 1)]) == 0 &&
-                eval(mda[irow][icol] / mda[irow][eval(icol + 1)]) <= 3
+                eval(divArray[row][column] % divArray[row][eval(column + 1)]) == 0 &&
+                eval(divArray[row][column] / divArray[row][eval(column + 1)]) <= 3
               ) {
-                gsofar +=
+                g_SoFar +=
                   "mda[" +
-                  irow +
+                  row +
                   "][" +
-                  icol +
+                  column +
                   "]/mda[" +
-                  irow +
+                  row +
                   "][" +
-                  eval(icol + 1) +
+                  eval(column + 1) +
                   "];";
-                groupings[eval(gslen - 1)] =
-                  eval(mda[irow][icol] / mda[irow][eval(icol + 1)]) + "/";
+                groupings[eval(groupingsLength - 1)] =
+                  eval(divArray[row][column] / divArray[row][eval(column + 1)]) + "/";
               } else {
-                gsofar +=
+                g_SoFar +=
                   "mda[" +
-                  irow +
+                  row +
                   "][" +
-                  icol +
+                  column +
                   "]-mda[" +
-                  irow +
+                  row +
                   "][" +
-                  eval(icol + 1) +
+                  eval(column + 1) +
                   "];";
-                groupings[eval(gslen - 1)] =
-                  eval(mda[irow][icol] - mda[irow][eval(icol + 1)]) + "-";
+                groupings[eval(groupingsLength - 1)] =
+                  eval(divArray[row][column] - divArray[row][eval(column + 1)]) + "-";
               }
               //gsofar+="mda[" + irow + "][" + icol + "],mda[" + irow + "][" + eval(icol + 1) + "];";
-              upacross = -1;
+              upAcross = -1;
             }
           }
-          if (numsquares == 1) {
-            gonesofar += "mda[" + irow + "][" + icol + "];";
-            gsofar += "mda[" + irow + "][" + icol + "];";
-            groupings[eval(gslen - 1)] = mda[irow][icol];
-            document.getElementById(
-              "td" + eval(irow + 1) + eval(icol + 1)
-            ).classList.add("borderTop");
-            document.getElementById(
-              "td" + eval(irow + 1) + eval(icol + 1)
-            ).classList.add("borderBottom");
-            document.getElementById(
-              "td" + eval(irow + 1) + eval(icol + 1)
-            ).classList.add("borderLeft");
-            document.getElementById(
-              "td" + eval(irow + 1) + eval(icol + 1)
-            ).classList.add("borderRight");
+          if (numOfSquares == 1) {
+            goneSoFar += "mda[" + row + "][" + column + "];";
+            g_SoFar += "mda[" + row + "][" + column + "];";
+            groupings[eval(groupingsLength - 1)] = divArray[row][column];
+            document
+              .getElementById("td" + eval(row + 1) + eval(column + 1))
+              .classList.add("borderTop");
+            document
+              .getElementById("td" + eval(row + 1) + eval(column + 1))
+              .classList.add("borderBottom");
+            document
+              .getElementById("td" + eval(row + 1) + eval(column + 1))
+              .classList.add("borderLeft");
+            document
+              .getElementById("td" + eval(row + 1) + eval(column + 1))
+              .classList.add("borderRight");
           }
         }
-        plussup = (
+        plusSup = (
           "<sup>" +
-          groupings[eval(gslen - 1)] +
+          groupings[eval(groupingsLength - 1)] +
           "</sup>" +
-          document.getElementById("td" + eval(irow + 1) + eval(icol + 1))
+          document.getElementById("td" + eval(row + 1) + eval(column + 1))
             .innerHTML
-        ).replace("NaN", mda[irow][icol]);
+        ).replace("NaN", divArray[row][column]);
         document.getElementById(
-          "td" + eval(irow + 1) + eval(icol + 1)
-        ).innerHTML = plussup;
+          "td" + eval(row + 1) + eval(column + 1)
+        ).innerHTML = plusSup;
         //alert("document.getElementById('td" + eval(irow + 1) + eval(icol + 1) + "').innerHTML=" + document.getElementById('td' + eval(irow + 1) + eval(icol + 1)).innerHTML);
         //alert(numsquares);
       } else {
-        plussup = (
+        plusSup = (
           "<sup>&nbsp;</sup>" +
-          document.getElementById("td" + eval(irow + 1) + eval(icol + 1))
+          document.getElementById("td" + eval(row + 1) + eval(column + 1))
             .innerHTML
-        ).replace("NaN", mda[irow][icol]);
+        ).replace("NaN", divArray[row][column]);
         document.getElementById(
-          "td" + eval(irow + 1) + eval(icol + 1)
-        ).innerHTML = plussup;
+          "td" + eval(row + 1) + eval(column + 1)
+        ).innerHTML = plusSup;
       }
     }
   }
@@ -604,38 +589,37 @@ function populategroupings() {
 }
 
 function populate() {
-  var tdo,
-    tdospare,
-    sofar = ";;",
-    guess = "",
-    krow,
-    cnt = 0,
-    retval = true,
-    tdoinnerhtml = "";
-  if (divcontent == "") {
-    divcontent = document.getElementById("mydiv").innerHTML;
+  let tdObject;
+  let tdObjectSpare;
+  let guess = "";
+  let kRow;
+  let cnt = 0;
+  let returnValue = true;
+
+  if (divContent == "") {
+    divContent = document.getElementById("mydiv").innerHTML;
   } else {
-    document.getElementById("mydiv").innerHTML = divcontent;
+    document.getElementById("mydiv").innerHTML = divContent;
   }
-  okcnt = 0;
+  okCount = 0;
   document.title += ".";
-  for (var irow = 1; irow <= 6; irow++) {
-    sofar = ";;";
+  for (let row = 1; row <= 6; row++) {
+    let soFar = ";;";
     guess = "";
-    for (var icol = 1; icol <= 6; icol++) {
-      tdo = document.getElementById("td" + irow + icol);
+    for (let column = 1; column <= 6; column++) {
+      tdObject = document.getElementById("td" + row + column);
       cnt = 0;
       ok = false;
       while (!ok) {
-        while (sofar.indexOf(";" + guess + ";") != -1) {
+        while (soFar.indexOf(";" + guess + ";") != -1) {
           guess = Math.floor(Math.random() * 6) + 1;
         }
         ok = true;
-        if (irow > 1) {
+        if (row > 1) {
           ok = true;
-          for (krow = 1; krow < irow; krow++) {
-            tdospare = document.getElementById("td" + krow + icol);
-            if (tdospare.innerHTML.indexOf(">" + guess + "<") != -1) {
+          for (kRow = 1; kRow < row; kRow++) {
+            tdObjectSpare = document.getElementById("td" + kRow + column);
+            if (tdObjectSpare.innerHTML.indexOf(">" + guess + "<") != -1) {
               cnt++;
               //alert(guess + " " + sofar + ":" + tdospare.innerHTML);
               ok = false;
@@ -645,82 +629,82 @@ function populate() {
         }
         if (!ok) guess = Math.floor(Math.random() * 6) + 1;
       }
-      tdo.innerHTML =
+      tdObject.innerHTML = 
         "<div align='center'><font size=3 id='f" +
-        eval(irow - 1) +
-        eval(icol - 1) +
+        eval(row - 1) +
+        eval(column - 1) +
         "' style='display:none;'>" +
         guess +
         "</font></div>";
-      mda[eval(irow - 1)][eval(icol - 1)] = eval(guess);
-      sofar += guess + ";";
+      divArray[eval(row - 1)][eval(column - 1)] = eval(guess);
+      soFar += guess + ";";
     }
   }
-  if (retval) {
-    populategroupings();
+  if (returnValue) {
+    populateGroupings();
     rework(document.getElementById("mydiv").innerHTML);
     goes++;
     document.getElementById("myh4").innerHTML =
       "Score: " + score + " Goes: " + goes;
   }
-  return retval;
+  return returnValue;
 }
 
-function makesel(iwhich, isup) {
-  if (isup != "-" && isup != "*" && isup != "/" && isup != "+") {
-    okcnt++;
+function makeSelectControl(whichField, superscript) {
+  if (superscript != "-" && superscript != "*" && superscript != "/" && superscript != "+") {
+    okCount++;
     return (
       '<select onchange=" if (eval(this.value) != ' +
-      iwhich +
+      whichField +
       ") { this.value=" +
-      iwhich +
+      whichField +
       '; } else { okcnt=okcnt; } "><option></option><option value=1>1</option><option value=2>2</option><option value=3>3</option><option value=4>4</option><option value=5>5</option><option value=6>6</option></select>'
-    ).replace(" value=" + isup, " value=" + isup + " selected");
+    ).replace(" value=" + superscript, " value=" + superscript + " selected");
   }
   return (
     '<select onchange=" if (eval(this.value) != ' +
-    iwhich +
+    whichField +
     ') { this.value=nth; } else { okcnt++; } "><option></option><option value=1>1</option><option value=2>2</option><option value=3>3</option><option value=4>4</option><option value=5>5</option><option value=6>6</option></select>'
   );
 }
 
-function rework(inmydiv) {
-  prerework = inmydiv.replace(/none/g, "inline");
-  var outmydiv = inmydiv;
-  var mynum = 0,
-    mysupchar = "";
-  var outef = outmydiv.split("</font>");
-  var mysups;
-  outmydiv = outef[0];
-  for (var ii = 1; ii < outef.length; ii++) {
-    mysups = outef[eval(ii - 1)].split("</sup>");
-    mysupchar = "+";
-    if (mysups.length > 1) {
-      mysupchar = mysups[0].substring(eval(mysups[0].length - 1));
+function rework(inMyDiv) {
+  preRework = inMyDiv.replace(/none/g, "inline");
+  let outMyDiv = inMyDiv;
+  let myNumber = 0;
+  let mySuperscriptChar = "";
+  let outElementFont = outMyDiv.split("</font>");
+  let mySuperscripts;
+
+  outMyDiv = outElementFont[0];
+  for (let ii = 1; ii < outElementFont.length; ii++) {
+    mySuperscripts = outElementFont[eval(ii - 1)].split("</sup>");
+    mySuperscriptChar = "+";
+    if (mySuperscripts.length > 1) {
+      mySuperscriptChar = mySuperscripts[0].substring(eval(mySuperscripts[0].length - 1));
     }
-    mynum = outef[eval(ii - 1)].substring(eval(outef[eval(ii - 1)].length - 1));
-    outmydiv += "</font>" + makesel(mynum, mysupchar) + outef[ii];
+    myNumber = outElementFont[eval(ii - 1)].substring(eval(outElementFont[eval(ii - 1)].length - 1));
+    outMyDiv += "</font>" + makeSelectControl(myNumber, mySuperscriptChar) + outElementFont[ii];
   }
-  document.getElementById("mydiv").innerHTML = outmydiv;
+  document.getElementById("mydiv").innerHTML = outMyDiv;
 }
 
 function check() {
-  if (eval(okcnt) >= 36) {
+  if (eval(okCount) >= 36) {
     score++;
-    okcnt = 0;
-    document.getElementById("myh4").innerHTML =
-      "Score: " + score + " Goes: " + goes;
+    okCount = 0;
+    document.getElementById("myh4").innerHTML = "Score: " + score + " Goes: " + goes;
     alert("Congratulations!");
     groupings = new Array("");
     while (!populate()) {
       ok = ok;
     }
-  } else if (eval(okcnt) == -10) {
-    document.getElementById("mydiv").innerHTML = prerework;
-    okcnt++;
-  } else if (eval(okcnt) < 0) {
-    okcnt++;
-    if (eval(okcnt) == 0) {
+  } else if (eval(okCount) == -10) {
+    document.getElementById("mydiv").innerHTML = preRework;
+    okCount++;
+  } else if (eval(okCount) < 0) {
+    okCount++;
+    if (eval(okCount) == 0) {
       groupings = new Array("");
       while (!populate()) {
         ok = ok;
